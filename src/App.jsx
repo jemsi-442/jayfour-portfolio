@@ -21,7 +21,7 @@ function Navbar() {
   return (
     <nav className="p-3 bg-black shadow-lg sticky-top">
       <div className="container d-flex justify-content-between align-items-center">
-        <h3 className="m-0 text-primary">JAYFOUR X JEMSI DEV</h3>
+        <h3 className="m-0 text-primary">JAYFOURx TECH CAMP</h3>
         <div className="d-flex align-items-center">
           <NavLink to="/" className={linkClass}>Home</NavLink>
           <NavLink to="/services" className={linkClass}>Services</NavLink>
