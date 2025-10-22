@@ -1,0 +1,10 @@
+/* Dashboard.css */
+.bg-black {
+  background-color: #121212 !important;
+}
+.shadow-lg {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+.rounded {
+  border-radius: 1rem;
+}

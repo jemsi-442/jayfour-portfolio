@@ -1,0 +1,130 @@
+/* src/components/pages/Services.css */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+.fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.services-section {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000000, #0d0d2b);
+  color: white;
+  padding: 60px 20px;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3);
+}
+
+.service-card .icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+  color: cyan;
+}
+
+.hover-zoom {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-zoom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+
+.hover-glow {
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.hover-glow:hover {
+  color: #00fff7;
+  text-shadow: 0 0 8px #00fff7, 0 0 12px #00fff7;
+}
+
+.bg-dark { background-color: #121212; }
+.text-light { color: #f0f0f0; }
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+
+.bg-dark { background-color: #121212; }
+.text-light { color: #f0f0f0; }
+
+.hover-scale:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Fade-in animation for service cards */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+.fade-in:nth-child(6) { animation-delay: 0.6s; }
+.fade-in:nth-child(7) { animation-delay: 0.7s; }
+.fade-in:nth-child(8) { animation-delay: 0.8s; }
+.fade-in:nth-child(9) { animation-delay: 0.9s; }
+.fade-in:nth-child(10) { animation-delay: 1s; }
+.fade-in:nth-child(11) { animation-delay: 1.1s; }
+.fade-in:nth-child(12) { animation-delay: 1.2s; }
+.fade-in:nth-child(13) { animation-delay: 1.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
