@@ -1,26 +1,20 @@
-import jwt from "jsonwebtoken";
-import User from "../models/User.js";
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
 
-export const protect = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   let token;
   if (req.headers.authorization?.startsWith("Bearer")) {
     token = req.headers.authorization.split(" ")[1];
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, "SECRET_KEY");
       req.user = await User.findById(decoded.id).select("-password");
       next();
-    } catch (error) {
-      return res.status(401).json({ message: "Not authorized" });
+    } catch (err) {
+      return res.status(401).json({ message: "Not authorized, token failed" });
     }
   } else {
-    return res.status(401).json({ message: "No token, not authorized" });
+    return res.status(401).json({ message: "Not authorized, no token" });
   }
 };
 
-export const admin = (req, res, next) => {
-  if (req.user && req.user.role === "admin") {
-    next();
-  } else {
-    res.status(403).json({ message: "Admin only" });
-  }
-};
+module.exports = authMiddleware;

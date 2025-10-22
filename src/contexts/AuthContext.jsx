@@ -6,41 +6,27 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  // load user from localStorage on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) setUser(JSON.parse(storedUser));
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios.get("http://localhost:5000/api/auth/admin-only", {
+        headers: { Authorization: `Bearer ${token}` },
+      }).then(res => {
+        setUser({ ...res.data.user, token });
+      }).catch(() => {
+        setUser(null);
+        localStorage.removeItem("token");
+      });
+    }
   }, []);
 
-  const signup = async (data) => {
-    try {
-      const res = await axios.post("/api/auth/signup", data);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      setUser(res.data.user);
-      return res.data;
-    } catch (err) {
-      throw err.response?.data || err;
-    }
-  };
-
-  const login = async (data) => {
-    try {
-      const res = await axios.post("/api/auth/login", data);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-      setUser(res.data.user);
-      return res.data;
-    } catch (err) {
-      throw err.response?.data || err;
-    }
-  };
-
   const logout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, signup, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, logout }}>
       {children}
     </AuthContext.Provider>
   );
