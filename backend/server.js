@@ -2,19 +2,23 @@ import express from "express";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
-import logger from "./utils/logger.js";
+
+dotenv.config();
 
 const app = express();
 
-app.use(cors());
+// Middleware
 app.use(express.json());
-app.use(logger);
-
-connectDB();
+app.use(cors());
 
 app.use("/api/auth", authRoutes);
 
-app.get("/api/hello", (req, res) => res.json({ msg: "Hello from API" }));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+// Start server only after MongoDB connects
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB connected");
+    app.listen(process.env.PORT || 5000, () =>
+      console.log(`Server running on port ${process.env.PORT || 5000}`)
+    );
+  })
+  .catch(err => console.error("MongoDB connection error:", err));

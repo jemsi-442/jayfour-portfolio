@@ -1,5 +1,9 @@
 // backend/utils/logger.js
-export default function logger(req, res, next) {
-  console.log(`${req.method} ${req.url}`);
-  next();
-}
+
+export const logger = {
+  info: (message) => console.log(`ℹ️  ${message}`),
+  warn: (message) => console.warn(`⚠️  ${message}`),
+  error: (message) => console.error(`❌  ${message}`),
+};
+
+export default logger;

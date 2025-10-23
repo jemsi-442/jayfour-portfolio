@@ -16,11 +16,12 @@ function Navbar() {
   return (
     <nav className="p-3 bg-black shadow-lg sticky-top">
       <div className="container d-flex justify-content-between align-items-center">
-        <h3 className="text-primary m-0">JAYFOUR TECH CAMP</h3>
-        <div>
-          <NavLink to="/" className="text-light mx-2">Home</NavLink>
-          <NavLink to="/services" className="text-light mx-2">Services</NavLink>
-          {user?.role === "admin" && (
+        <h3 className="m-0 text-primary">JAYFOUR X JEMSI DEV</h3>
+        <div className="d-flex align-items-center">
+          <NavLink to="/" className={linkClass}>Home</NavLink>
+          <NavLink to="/services" className={linkClass}>Services</NavLink>
+
+          {user && user.role === "admin" && (
             <>
               <NavLink to="/dashboard" className="text-light mx-2">Dashboard</NavLink>
               <NavLink to="/analytics" className="text-light mx-2">Analytics</NavLink>
