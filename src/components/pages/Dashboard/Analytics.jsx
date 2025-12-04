@@ -5,7 +5,7 @@ import { Container, Card, Row, Col, ProgressBar } from "react-bootstrap";
 export default function Analytics() {
   return (
     <Container className="my-5 p-4 rounded shadow-lg bg-black text-light min-vh-100">
-      <h2 className="text-center mb-4">📊 Analytics</h2>
+      <h2 className="text-center mb-4"> Analytics</h2>
       <Row>
         <Col md={6} className="mb-4">
           <Card className="bg-secondary text-light shadow-lg border-0 p-3">

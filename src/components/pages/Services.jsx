@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Card, Container, Row, Col, Form, Button } from "react-bootstrap";
-import { AuthContext } from "../../contexts/AuthContext";
+
 import {
   FaCode,
   FaMobileAlt,

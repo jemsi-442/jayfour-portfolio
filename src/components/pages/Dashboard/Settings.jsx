@@ -5,7 +5,7 @@ import { Container, Card, Form, Button, Row, Col } from "react-bootstrap";
 export default function Settings() {
   return (
     <Container className="my-5 p-4 rounded shadow-lg bg-black text-light min-vh-100">
-      <h2 className="text-center mb-4">⚙️ Settings</h2>
+      <h2 className="text-center mb-4"> Settings</h2>
 
       <Card className="bg-secondary text-light shadow-lg border-0 p-4 mb-4">
         <h5>Profile Settings</h5>
