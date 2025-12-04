@@ -1,51 +1,36 @@
-import React from "react";
-import Navbar from "./components/Navbar.jsx";
-import Hero from "./components/Hero.jsx";
-import About from "./components/About.jsx";
-import ServiceCard from "./components/ServiceCard.jsx";
-import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
-import ScrollIndicator from "./components/ScrollIndicator.jsx";
-import ScrollToTop from "./components/ScrollToTop.jsx";
-import ThemeToggle from "./components/ThemeToggle.jsx";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-import "./App.css";   
+// Layout
+import PublicLayout from "./layouts/PublicLayout";
+
+// Public pages
+import Home from "./components/pages/Home";
+import Services from "./components/pages/Services";
+import NotFound from "./components/pages/NotFound";
+
+// Dashboard
+import Analytics from "./components/pages/Dashboard/Analytics";
+import Settings from "./components/pages/Dashboard/Settings";
 
 function App() {
   return (
-    <>
-      {/* Scroll progress bar top */}
-      <ScrollIndicator />
+    <Router>
+      <Routes>
 
-      {/* Navbar */}
-      <Navbar />
+        {/* PUBLIC WEBSITE */}
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+        </Route>
 
-      {/* Theme toggle (floating button) */}
-      <ThemeToggle />
+        {/* DASHBOARD - NO NAVBAR */}
+        <Route path="/dashboard/analytics" element={<Analytics />} />
+        <Route path="/dashboard/settings" element={<Settings />} />
 
-      {/* Hero Section */}
-      <Hero />
-
-      {/* About Section */}
-      <About />
-
-      {/* Services Section */}
-      <section id="services" className="services-section">
-        <h2 className="section-title">SERVICES</h2>
-        <div className="services-container">
-          <ServiceCard />
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <Contact />
-
-      {/* Footer */}
-      <Footer />
-
-      {/* Scroll To Top Button */}
-      <ScrollToTop />
-    </>
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 

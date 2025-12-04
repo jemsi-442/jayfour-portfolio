@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Card, Container, Row, Col, Form, Button } from "react-bootstrap";
 
 import {
@@ -15,6 +15,7 @@ import {
   FaShip,
   FaBuilding,
   FaQuestion,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const getServiceIcon = (title) => {
@@ -36,12 +37,7 @@ const getServiceIcon = (title) => {
 };
 
 export default function Services() {
-  const { user } = useContext(AuthContext);
-  const isAdmin = user?.role === "admin";
-
   const [services, setServices] = useState([]);
-  const [newTitle, setNewTitle] = useState("");
-  const [newDescription, setNewDescription] = useState("");
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [formData, setFormData] = useState({ name: "", phone: "", service: "", message: "" });
   const [notification, setNotification] = useState(null);
@@ -58,88 +54,42 @@ zinaangazia ubunifu, usahihi, na scalability ya mifumo. Tunaunda:
 - Websites responsive za kisasa zenye UX/UI nzuri.
 - Mobile Apps za iOS & Android zenye performance bora.
 - Management Systems zinazoraidia process automation.
-- Custom software solutions kulingana na mahitaji ya mteja.
-
-Kwa JAYFOUR DIGITAL SOLUTIONS, kila mradi unachukuliwa kitaalamu, tunahakikisha code ni
-clean, maintainable na inatoa faida halisi kwa mteja. Hii ni suluhisho kamili kwa wale
-wanaotaka teknolojia iliyosanifiwa vizuri, salama, na yenye value kubwa.`,
+- Custom software solutions kulingana na mahitaji ya mteja.`,
       },
       {
         title: "Cybersecurity",
         description: "Protect systems & data.",
         details: `Huduma za Cybersecurity ni muhimu sana katika zama hizi za digitali, ambapo mashambulizi
-ya mtandao yamekuwa ya kawaida. Tunatoa ulinzi wa kina kwa data na systems zako ili kuhakikisha
-hakuna upotevu au udukuzi. Huduma zetu ni pamoja na:
-
-- Penetration testing ili kubaini vulnerabilities.
-- Network & system hardening.
-- Data encryption na protection strategies.
-- Incident response na disaster recovery plans.
-- Training ya staff kuhusu security awareness.
-
-Kwa kutumia JAYFOUR DIGITAL SOLUTIONS, wateja wanapata amani ya akili, ulinzi wa data, na
-uhakika wa kufuata best practices za cybersecurity.`,
+ya mtandao yamekuwa ya kawaida. Tunatoa ulinzi wa kina kwa data na systems zako.`,
       },
       {
         title: "Training",
         description: "Digital skills training & mentorship.",
         details: `Tunatoa mafunzo ya vitendo na mentorship ya wataalamu katika ujuzi wa kisasa. Tunafundisha:
-
 - Programming: Python, JavaScript, Django, na frameworks nyingine.
-- Web & Mobile Development.
-- Cybersecurity: Ethical hacking, risk management.
-- Data Analytics & Business Intelligence.
-- IT Literacy na digital transformation skills.
-
-Kila training inafanywa na specialists, yenye exercises za real-world na projects. Tunahakikisha
-wanafunzi wanapata ujuzi unaoweza kutumika mara moja kwenye kazi au miradi yao binafsi.`,
+- Web & Mobile Development
+- Cybersecurity
+- Data Analytics & Business Intelligence`,
       },
       {
         title: "Consultancy",
         description: "Digital & government e-service consultancy.",
         details: `Huduma za Consultancy za JAYFOUR DIGITAL SOLUTIONS zinarahisisha maombi na ushauri
-wa kidigitali na serikali. Tunasaidia:
-
-- eRITA: Vyeti vya kuzaliwa, vifo, na ndoa.
-- NIDA: Registration na verification ya national IDs.
-- BRELA: Usajili wa kampuni na biashara.
-- TRA & HESLB: Compliance, tax & loan guidance.
-- Immigration & Visa applications.
-
-Tunakupa mwongozo wa hatua kwa hatua na tunahakikisha unapata huduma rasmi bila kuchelewa. 
-Huduma zetu ni sahihi, haraka, na zinahakikisha mteja anakuwa na experience bora ya digital governance.`,
+wa kidigitali na serikali.`,
       },
       {
         title: "RITA Services",
         description: "Birth & death certificate support.",
-        details: `Huduma za eRITA ni za kisasa na zinahusisha maombi ya vyeti rasmi mtandaoni. 
-Tunasaidia wateja kujaza form, kulipa, kufuatilia, na kupata vyeti vya kuzaliwa, vifo, na ndoa
-kutoka serikalini kwa urahisi na haraka. Hii ni muhimu kwa usahihi wa data na documentation
-ya familia au biashara.`,
+        details: `Huduma za eRITA ni za kisasa na zinahusisha maombi ya vyeti rasmi mtandaoni.`,
       },
       {
         title: "NIDA Services",
         description: "National ID registration support.",
-        details: `Huduma ya NIDA inarahisisha kupata au kusasisha National IDs. Tunasaidia:
-- Kujaza forms mtandaoni.
-- Marekebisho ya data na verification.
-- Kupata NIDA number au replacement ya ID.
-
-Tunahakikisha kila mteja anapata support ya haraka na sahihi, bila vikwazo vya kawaida vya
-bodi za usajili.`,
+        details: `Huduma ya NIDA inarahisisha kupata au kusasisha National IDs.`,
       },
     ];
     setServices(mockServices);
   }, []);
-
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    if (!newTitle || !newDescription) return;
-    const newService = { title: newTitle, description: newDescription };
-    setServices([newService, ...services]);
-    setNewTitle("");
-    setNewDescription("");
-  };
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -175,32 +125,6 @@ bodi za usajili.`,
     <div className="bg-dark text-light min-vh-100 d-flex justify-content-center align-items-start py-5">
       <Container className="p-4 rounded shadow-lg bg-black">
         <h2 className="text-center mb-5 animate-fadeIn">Our Services</h2>
-
-        {isAdmin && (
-          <Form onSubmit={handleUpload} className="mb-4 animate-fadeIn delay-200">
-            <Form.Group className="mb-2">
-              <Form.Control
-                type="text"
-                placeholder="Service Title"
-                value={newTitle}
-                onChange={(e) => setNewTitle(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Control
-                type="text"
-                placeholder="Service Description"
-                value={newDescription}
-                onChange={(e) => setNewDescription(e.target.value)}
-                required
-              />
-            </Form.Group>
-            <Button type="submit" className="hover-scale w-100">
-              Add Service
-            </Button>
-          </Form>
-        )}
 
         {notification && (
           <div
@@ -281,7 +205,6 @@ bodi za usajili.`,
                         </Button>
                       </Form>
 
-                      {/* ✅ Sehemu mpya ya WhatsApp au Call */}
                       <div className="mt-3 d-flex justify-content-center gap-2">
                         <Button
                           variant="success"
@@ -308,19 +231,47 @@ bodi za usajili.`,
         </Row>
       </Container>
 
-      <style>
-        {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fadeIn { animation: fadeIn 0.8s forwards; }
-          .delay-200 { animation-delay: 0.2s; }
-          .delay-400 { animation-delay: 0.4s; }
-          .hover-scale { transition: transform 0.2s ease-in-out; }
-          .hover-scale:hover { transform: scale(1.05); }
-        `}
-      </style>
+      {/* WhatsApp floating */}
+      <a
+        href="https://wa.me/255683186987"
+        className="whatsapp-float"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="WhatsApp Chat"
+      >
+        <FaWhatsapp size={28} />
+      </a>
+
+      <style>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.8s forwards; }
+        .delay-400 { animation-delay: 0.4s; }
+        .hover-scale { transition: transform 0.2s ease-in-out; }
+        .hover-scale:hover { transform: scale(1.05); }
+
+        .whatsapp-float {
+          position:fixed;
+          bottom:25px;
+          right:25px;
+          background:#25D366;
+          color:#fff;
+          padding:12px;
+          border-radius:50%;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          box-shadow:0 4px 10px rgba(0,0,0,0.3);
+          transition:transform 0.2s ease;
+          z-index:999;
+        }
+        .whatsapp-float:hover { transform:scale(1.1); }
+
+        .svc-panel { max-height:0; overflow:hidden; opacity:0; transition: all 0.4s ease; }
+        .svc-panel.open { max-height:500px; opacity:1; margin-top:0.8rem; }
+      `}</style>
     </div>
   );
 }
