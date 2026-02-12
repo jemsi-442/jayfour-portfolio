@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  devIndicators: false,
-};
+  devIndicators: {
+    buildActivity: false
+  }
+}
 
-export default nextConfig;
+export default nextConfig
