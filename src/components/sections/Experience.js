@@ -26,9 +26,7 @@ export default function Experience() {
         let current = 0;
         cards.forEach((card, i) => {
           const cardRect = card.getBoundingClientRect();
-          if (cardRect.top <= window.innerHeight * 0.4) {
-            current = i;
-          }
+          if (cardRect.top <= window.innerHeight * 0.4) current = i;
         });
         setActiveIndex(current);
       }
@@ -45,17 +43,17 @@ export default function Experience() {
       <div className="bg-background pt-20 md:pt-28 pb-12 md:pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-mono uppercase tracking-widest text-accent mb-3">
-            Work Experience
+            Professional Backend Journey
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
-            A professional journey,
+            My Backend Architecture Path,
             <br />
-            <span className="text-accent">from learning to leading</span>
+            <span className="text-accent">from structured systems to scalable APIs</span>
           </h2>
         </div>
       </div>
 
-      {/* Stacking cards - each sticks at top and gets covered by the next */}
+      {/* Experience cards */}
       {experience.map((item, i) => (
         <div
           key={item.company}
@@ -66,10 +64,8 @@ export default function Experience() {
             background: `linear-gradient(160deg, ${cardStyles[i].bg} 0%, #0a0a0a 60%)`,
           }}
         >
-          {/* Subtle grid overlay */}
           <div className="absolute inset-0 hero-grid opacity-[0.12]" />
 
-          {/* Top border accent */}
           <div
             className="absolute top-0 left-0 right-0 h-px"
             style={{ backgroundColor: cardStyles[i].accent + "30" }}
@@ -101,7 +97,6 @@ export default function Experience() {
 
               {/* Right - Content */}
               <div className="lg:col-span-9">
-                {/* Year badge */}
                 <span
                   className="inline-block text-xs font-mono font-bold px-3 py-1 rounded-full border mb-5"
                   style={{
@@ -113,12 +108,10 @@ export default function Experience() {
                   {item.year}
                 </span>
 
-                {/* Title */}
                 <h3 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2">
                   {item.title}
                 </h3>
 
-                {/* Company */}
                 <p
                   className="text-base sm:text-lg md:text-xl font-medium mb-5 md:mb-6"
                   style={{ color: cardStyles[i].accent }}
@@ -126,12 +119,10 @@ export default function Experience() {
                   {item.company}
                 </p>
 
-                {/* Description */}
                 <p className="text-foreground-secondary text-sm sm:text-base md:text-lg leading-relaxed mb-6 md:mb-8 max-w-2xl">
                   {item.description}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {item.tags.map((tag) => (
                     <span
@@ -151,11 +142,11 @@ export default function Experience() {
             </div>
           </div>
 
-          {/* Scroll hint on last card */}
+          {/* Scroll hint */}
           {i === experience.length - 1 && (
             <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
               <span className="text-[10px] sm:text-xs text-foreground-muted font-mono uppercase tracking-wider">
-                Continue
+                Next Section
               </span>
               <div className="w-5 h-8 rounded-full border-2 border-foreground-muted/30 flex items-start justify-center p-1">
                 <div className="w-1 h-2 rounded-full bg-foreground-muted/50 animate-[bounce_1.5s_infinite]" />
@@ -165,7 +156,7 @@ export default function Experience() {
         </div>
       ))}
 
-      {/* Fixed progress dots - only visible when section is in view */}
+      {/* Fixed progress dots */}
       <div
         className="fixed right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-40 transition-opacity duration-300"
         style={{ opacity: inView ? 1 : 0, pointerEvents: inView ? "auto" : "none" }}

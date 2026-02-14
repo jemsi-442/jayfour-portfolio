@@ -10,8 +10,8 @@ export default function Education() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <SectionHeading
-            title="Education"
-            subtitle="My learning journey and professional growth"
+            title="Education & System Mastery"
+            subtitle="Structured learning that shaped my backend architecture expertise"
           />
         </AnimateOnScroll>
 
@@ -22,7 +22,7 @@ export default function Education() {
           <div className="space-y-12">
             {education.map((item, index) => (
               <AnimateOnScroll
-                key={`${item.institution}-${index}`} // unique key
+                key={`${item.institution}-${index}`}
                 animation="animate-fade-in-up"
                 delay={index * 150}
               >
@@ -48,6 +48,13 @@ export default function Education() {
                     <p className="text-foreground-secondary text-sm mt-2 leading-relaxed">
                       {item.description}
                     </p>
+
+                    {/* Optional: highlight backend/system focus */}
+                    {item.title.toLowerCase().includes("software") && (
+                      <p className="mt-2 text-xs sm:text-sm font-mono text-accent">
+                        Focus: Backend Architecture, System Design, Secure Development
+                      </p>
+                    )}
                   </div>
                 </div>
               </AnimateOnScroll>

@@ -7,15 +7,17 @@ export default function About() {
   return (
     <section id="about" className="py-20 md:py-28 bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Heading */}
         <AnimateOnScroll>
           <SectionHeading
-            title="About Me"
-            subtitle="Engineering scalable and secure systems"
+            title="Engineering Philosophy"
+            subtitle="Systems over features. Architecture over shortcuts."
           />
         </AnimateOnScroll>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
           {/* Left - Profile Image */}
           <AnimateOnScroll animation="animate-slide-in-left">
             <div className="relative mx-auto max-w-sm lg:max-w-none">
@@ -23,7 +25,7 @@ export default function About() {
               <div className="relative aspect-square rounded-2xl overflow-hidden border border-border bg-surface">
                 <Image
                   src={profile.profileImage}
-                  alt={`${profile.name} - Profile`}
+                  alt={`${profile.name} - Backend Systems Engineer`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 384px, 50vw"
@@ -33,22 +35,43 @@ export default function About() {
             </div>
           </AnimateOnScroll>
 
-          {/* Right - About Text */}
+          {/* Right - Authority Text */}
           <div>
             <AnimateOnScroll animation="animate-slide-in-right">
-              <div className="space-y-4 mb-8">
-                {profile.about.map((paragraph, i) => (
-                  <p
-                    key={i}
-                    className="text-foreground-secondary leading-relaxed text-base md:text-lg"
-                  >
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="space-y-6 mb-8">
+
+                <p className="text-foreground-secondary leading-relaxed text-base md:text-lg">
+                  I approach software engineering from a systems perspective. 
+                  My work focuses on designing structured backend architectures, 
+                  scalable APIs, and secure authentication-driven workflows that 
+                  remain maintainable as complexity grows.
+                </p>
+
+                <p className="text-foreground-secondary leading-relaxed text-base md:text-lg">
+                  Rather than building isolated features, I design foundations — 
+                  role-based access control systems, structured business logic layers, 
+                  modular service architecture, and database models optimized 
+                  for performance and long-term extensibility.
+                </p>
+
+                <p className="text-foreground-secondary leading-relaxed text-base md:text-lg">
+                  My engineering mindset is guided by clean architecture principles, 
+                  security awareness, and production-readiness. Every system I build 
+                  is designed to be resilient, logically structured, and capable of 
+                  evolving without breaking under scale.
+                </p>
+
+                <p className="text-foreground-secondary leading-relaxed text-base md:text-lg">
+                  Working primarily within Linux-based environments, I emphasize 
+                  backend performance optimization, API integrity, structured 
+                  validation, and secure system design practices that align with 
+                  real-world deployment standards.
+                </p>
+
               </div>
             </AnimateOnScroll>
 
-            {/* Stats */}
+            {/* Stats - Repositioned as Engineering Indicators */}
             <AnimateOnScroll animation="animate-fade-in-up" delay={200}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {stats.map((stat) => (
@@ -66,6 +89,7 @@ export default function About() {
                 ))}
               </div>
             </AnimateOnScroll>
+
           </div>
         </div>
       </div>

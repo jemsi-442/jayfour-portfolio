@@ -5,24 +5,33 @@ import Badge from "@/components/ui/Badge";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 
 export default function Skills() {
-  const categories = Object.values(skills);
+  // Reorder categories to emphasize backend first
+  const categories = [
+    skills.backend,
+    skills.database,
+    skills.frontend,
+    skills.devops,
+  ];
 
   return (
-    <section id="skills" className="py-20 md:py-28">
+    <section id="skills" className="py-20 md:py-28 bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
         <AnimateOnScroll>
           <SectionHeading
-            title="Skills & Expertise"
-            subtitle="Technologies and tools I work with"
+            title="Architecture & Technical Expertise"
+            subtitle="Backend-driven systems, database modeling, and supporting technologies"
           />
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {categories.map((category, index) => (
             <AnimateOnScroll
               key={category.title}
               animation="animate-fade-in-up"
-              delay={index * 100}
+              delay={index * 150}
             >
               <Card className="h-full">
                 <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
@@ -38,6 +47,15 @@ export default function Skills() {
             </AnimateOnScroll>
           ))}
         </div>
+
+        {/* Bottom statement for authority */}
+        <AnimateOnScroll animation="animate-fade-in-up" delay={600}>
+          <p className="mt-12 max-w-3xl text-foreground-muted text-sm md:text-base leading-relaxed">
+            My primary expertise lies in backend architecture and system-level design. 
+            Databases and dev environments support production-grade system deployment, 
+            while frontend skills enable integration with optimized, maintainable interfaces.
+          </p>
+        </AnimateOnScroll>
       </div>
     </section>
   );

@@ -1,12 +1,12 @@
 export const profile = {
   name: "Jemsi Pallangyo (JAYFOUR)",
-  title: "Full-Stack Software Engineer",
+  title: "Backend Systems Engineer & API Architect",
   tagline:
-    "Building secure, scalable, and performance-driven web systems using modern technologies.",
+    "Designing structured backend architectures, secure authentication systems, and scalable APIs built for real-world production environments.",
   about: [
-    "I am a Full-Stack Software Engineer passionate about building clean, scalable, and production-ready systems. My focus is on backend architecture, API design, and secure application development using PHP, Symfony, Laravel, Django and JavaScript technologies.",
-    "With strong experience in Next.js, Node.js, and MongoDB, I design and implement systems that are structured, maintainable, and optimized for real-world usage. I approach every project with an engineering mindset thinking in systems, not just features.",
-    "Beyond coding, I am deeply interested in system security, performance optimization, and Linux-based development environments. I continuously refine my craft to build solutions that are both efficient and resilient.",
+    "I specialize in backend systems engineering with strong focus on structured architecture, role-based access control, and secure API-driven workflows. My approach prioritizes long-term maintainability over short-term feature delivery.",
+    "I design systems using clear separation of concerns, modular service layers, optimized database modeling, and authentication-centered business logic. Every system is built with scalability and resilience in mind.",
+    "Working primarily in Linux environments, I emphasize backend performance optimization, structured validation pipelines, API security, and clean architecture principles aligned with production standards.",
   ],
   location: "Tanzania",
   email: "jemsifredrick4@gmail.com",
@@ -22,64 +22,59 @@ export const profile = {
 };
 
 export const stats = [
-  { value: "10+", label: "Projects Built" },
-  { value: "100%", label: "Production Focus" },
-  { value: "Full-Stack", label: "Engineering Mindset" },
-  { value: "Linux", label: "Development Environment" },
+  { value: "10+", label: "Systems Engineered" },
+  { value: "RBAC", label: "Access Control Focus" },
+  { value: "API", label: "Architecture-Driven" },
+  { value: "Linux", label: "Primary Environment" },
 ];
 
 export const skills = {
+  backend: {
+    title: "Backend Architecture (Primary Focus)",
+    items: [
+      "Node.js",
+      "Express",
+      "PHP",
+      "Symfony",
+      "Laravel",
+      "Django",
+      "REST API Design",
+      "Authentication & Authorization",
+      "Role-Based Access Control (RBAC)",
+      "Secure API Architecture",
+      "Business Logic Structuring",
+    ],
+  },
+  database: {
+    title: "Database & Data Modeling",
+    items: [
+      "MongoDB",
+      "MySQL",
+      "PostgreSQL",
+      "MariaDB",
+      "Relational Data Modeling",
+      "Query Optimization",
+    ],
+  },
   frontend: {
-    title: "Frontend",
+    title: "Frontend (Supporting Layer)",
     items: [
       "React",
       "Next.js",
       "JavaScript",
       "TypeScript",
       "Tailwind CSS",
-      "Bootstrap",
-      "CSS & HTML",
-      "UI/UX Principles",
-      "Cross-Browser Compatibility",
-      "Responsive UI Design",
+      "Responsive UI Integration",
     ],
   },
-  backend: {
-    title: "Backend",
+  devops: {
+    title: "Dev Environment & Workflow",
     items: [
-      "Node.js",
-      "PHP",
-      "Symfony",
-      "Laravel",
-      "Django",
-      "Express",
-      "REST APIs",
-      "Authentication & Authorization",
-      "System Architecture",
-      "API Security",
-    ],
-  },
-  database: {
-    title: "Database & DevOps",
-    items: [
-      "MongoDB",
-      "MySQL",
-      "PostgreSQL",
-      "MariaDB",
+      "Linux",
       "Git & GitHub",
       "Vercel Deployment",
-      "Linux",
-      "CI/CD Concepts",
-    ],
-  },
-  soft: {
-    title: "Core Strengths",
-    items: [
-      "Problem Solving",
-      "System Thinking",
-      "Clean Code Practices",
-      "Performance Optimization",
-      "Continuous Learning",
+      "Environment Configuration",
+      "Basic CI/CD Concepts",
     ],
   },
 };
@@ -87,11 +82,17 @@ export const skills = {
 export const experience = [
   {
     year: "2019 - Present",
-    title: "Independent Software Engineer",
-    company: "Personal Projects",
+    title: "Independent Backend Systems Engineer",
+    company: "Architecture-Driven Projects",
     description:
-      "Designing and developing full-stack web applications using Next.js and Node.js. Focused on building scalable backend systems, structured APIs, and optimized frontend interfaces with production-ready deployment on Vercel.",
-    tags: ["Next.js", "Node.js", "MongoDB", "System Design"],
+      "Designing and engineering structured backend systems including authentication-driven platforms, role-based access control architectures, service-layered APIs, and scalable database models. Focused on production-ready deployment, logical consistency, and long-term maintainability.",
+    tags: [
+      "Backend Architecture",
+      "RBAC",
+      "API Design",
+      "Database Modeling",
+      "System Structuring",
+    ],
   },
 ];
 
@@ -99,70 +100,94 @@ export const education = [
   {
     year: "2021 - 2024",
     title: "Diploma in Human Resource Management (HRM)",
-    institution: "Tanzania Institite of Accountancy (TIA)",
+    institution: "Tanzania Institute of Accountancy (TIA)",
     description:
-      "Studied core HRM principles including recruitment, payroll, employee relations, and organizational behavior. Developed strong administrative and management foundations applicable across business environments.",
+      "Developed structured understanding of payroll systems, organizational workflows, and administrative processes — knowledge applied in designing structured payroll and management software systems.",
   },
   {
     year: "2024 - Present",
     title: "Bachelor of Business Administration (BBA)",
-    institution: "Tanzania Institite of Accountancy (TIA)",
+    institution: "Tanzania Institute of Accountancy (TIA)",
     description:
-      "Pursuing a BBA with focus on management, strategic planning, and business operations. Gaining leadership, decision-making, and analytical skills to complement technical expertise in software engineering.",
+      "Studying strategic planning, operational systems, and decision-making frameworks that inform scalable system architecture and structured backend workflow design.",
   },
   {
     year: "Ongoing",
-    title: "Software Engineering & System Architecture (Self-Driven)",
-    institution: "Continuous Learning",
+    title: "Backend Engineering & System Architecture (Self-Driven)",
+    institution: "Continuous Technical Development",
     description:
-      "Focused on backend engineering, scalable system design, secure development practices, and performance optimization using modern JavaScript ecosystems. Building real-world projects to reinforce learning.",
+      "Focused on clean architecture principles, secure backend design patterns, scalable API structuring, and performance-oriented database modeling through hands-on system implementations.",
   },
 ];
-
 
 export const projects = [
   {
     title: "RGC System",
     description:
-      "A structured backend-driven web system focused on authentication, role management, and scalable API architecture. Designed with clean separation of concerns and production deployment principles.",
-    tags: ["Node.js", "Express", "MongoDB", "API Design"],
+      "A backend-structured platform implementing role-based access control, secure authentication flows, and modular API architecture. Designed with layered separation of concerns and scalable database modeling for structured growth.",
+    tags: [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "RBAC",
+      "Authentication",
+      "API Architecture",
+    ],
     liveUrl: null,
     sourceUrl: "https://github.com/jemsi-442/rgc-system",
   },
-{
-  title: "Pharmacy-System",
-  description:
-    "A full-stack Pharmacy Management System with inventory tracking, sales management, and admin dashboard. Built with Node.js backend, MySQL database, and HTML/CSS/JS frontend.",
-  tags: ["Node.js", "Express", "MySQL", "HTML", "CSS", "JavaScript", "Full-Stack"],
-  liveUrl: null, // Backend + static frontend; no live deployment yet
-  sourceUrl: "https://github.com/jemsi-442/Pharmacy-System",
-},
+
+  {
+    title: "Pharmacy Management System",
+    description:
+      "A transaction-focused backend system handling inventory tracking, sales workflows, and structured data operations. Designed relational database models with optimized queries and controlled access management.",
+    tags: [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Relational Modeling",
+      "Backend Logic",
+    ],
+    liveUrl: null,
+    sourceUrl: "https://github.com/jemsi-442/Pharmacy-System",
+  },
 
   {
     title: "Payroll Management System",
     description:
-      "A backend-oriented payroll management application designed to handle salary calculations, deductions, and structured data workflows.",
-    tags: ["Laravel", "Backend Logic", "System Design"],
+      "A Laravel-based backend application implementing structured salary computation logic, deductions processing, and payroll workflow control. Designed with modular architecture and validation-driven processing.",
+    tags: [
+      "Laravel",
+      "Backend Architecture",
+      "Business Logic Structuring",
+      "Validation Pipelines",
+    ],
     liveUrl: null,
     sourceUrl: "https://github.com/jemsi-442/payroll_management",
   },
-{
-  title: "Marketplace Platform",
-  description:
-    "An enterprise-grade service marketplace with secure escrow, AI-powered dispute resolution, and fraud detection. Built with Symfony backend, ready for scalable fintech operations.",
-  tags: ["Symfony", "PHP", "Backend", "Fintech", "Escrow", "AI"],
-  liveUrl: "https://github.com/jemsi-442/marketplace", // since backend only, no live frontend yet
-  sourceUrl: "https://github.com/jemsi-442/marketplace",
-},
 
+  {
+    title: "Service Marketplace Platform",
+    description:
+      "A Symfony-based backend architecture implementing escrow workflow logic, controlled transaction states, role-based system access, and dispute handling flow. Structured for scalable marketplace operations with secure API endpoints.",
+    tags: [
+      "Symfony",
+      "PHP",
+      "Escrow Logic",
+      "RBAC",
+      "Marketplace Architecture",
+    ],
+    liveUrl: null,
+    sourceUrl: "https://github.com/jemsi-442/marketplace",
+  },
 ];
 
 export const navLinks = [
   { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Philosophy", href: "#about" },
+  { label: "Architecture Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
+  { label: "Systems", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Contact", href: "#contact" },
 ];
