@@ -1,171 +1,192 @@
 "use client";
 
-const techNodes = [
-  { label: "React", x: 50, y: 8, color: "#61DAFB" },
-  { label: "Next.js", x: 85, y: 20, color: "#ededed" },
-  { label: "Node.js", x: 92, y: 50, color: "#68A063" },
-  { label: "SpringBoot", x: 80, y: 78, color: "#6DB33F" },
-  { label: "Laravel", x: 50, y: 92, color: "#FF2D20" },
-  { label: "Android", x: 18, y: 78, color: "#3DDC84" },
-  { label: "Python", x: 8, y: 50, color: "#3776AB" },
-  { label: "Tailwind", x: 18, y: 20, color: "#06B6D4" },
+import { useState } from "react";
+
+const layers = [
+  {
+    radius: 20,
+    nodes: [
+      {
+        label: "Node.js",
+        color: "#68A063",
+        desc: "Event-driven API layer",
+        link: "https://github.com/jemsi-442/rgc-system",
+      },
+      {
+        label: "Symfony",
+        color: "#000000",
+        desc: "Enterprise service core",
+        link: "https://github.com/jemsi-442/marketplace",
+      },
+      {
+        label: "Laravel",
+        color: "#FF2D20",
+        desc: "Business logic engine",
+        link: "https://github.com/jemsi-442/payroll_management",
+      },
+      {
+        label: "Django",
+        color: "#092E20",
+        desc: "Secure backend framework",
+        link: "https://github.com/jemsi-442",
+      },
+    ],
+  },
+  {
+    radius: 34,
+    nodes: [
+      { label: "PostgreSQL", color: "#336791", desc: "Primary relational store" },
+      { label: "MongoDB", color: "#47A248", desc: "Document data layer" },
+      { label: "MySQL", color: "#00758F", desc: "Transactional storage" },
+      { label: "Redis", color: "#DC382D", desc: "Caching layer" },
+    ],
+  },
+  {
+    radius: 46,
+    nodes: [
+      { label: "Linux", color: "#FCC624", desc: "Production server OS" },
+      { label: "Docker", color: "#2496ED", desc: "Container orchestration" },
+      { label: "CI/CD", color: "#10B981", desc: "Automated deployment" },
+      { label: "Nginx", color: "#009639", desc: "Edge reverse proxy" },
+    ],
+  },
 ];
 
-const centralNode = { x: 50, y: 50 };
-const NODE_RADIUS = 3.5;
-const LABEL_OFFSET = 9;
+const center = { x: 50, y: 50 };
 
-function getLabelPosition(node) {
-  const dx = node.x - centralNode.x;
-  const dy = node.y - centralNode.y;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  const nx = dx / dist;
-  const ny = dy / dist;
+function polar(cx, cy, r, angle) {
+  const rad = (angle * Math.PI) / 180;
   return {
-    lx: node.x + nx * LABEL_OFFSET,
-    ly: node.y + ny * LABEL_OFFSET,
-    anchor: Math.abs(nx) < 0.3 ? "middle" : nx > 0 ? "start" : "end",
+    x: cx + r * Math.cos(rad),
+    y: cy + r * Math.sin(rad),
   };
 }
 
 export default function TechFlow() {
+  const [active, setActive] = useState(null);
+
   return (
-    <div className="relative w-[420px] h-[420px] sm:w-[470px] sm:h-[470px] md:w-[520px] md:h-[520px]">
-      {/* Outer glow */}
-      <div className="absolute inset-0 rounded-full bg-accent/5 blur-3xl animate-pulse-glow" />
+    <div className="relative w-[520px] h-[520px]">
+      <div className="absolute inset-0 rounded-full bg-accent/5 blur-3xl" />
 
-      <svg
-        viewBox="-12 -12 124 124"
-        className="w-full h-full"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Rotating outer rings */}
-        <circle
-          cx="50" cy="50" r="44"
-          fill="none" stroke="var(--accent)" strokeWidth="0.15" strokeDasharray="4 3"
-          className="animate-[spin_30s_linear_infinite]"
-          style={{ transformOrigin: "50px 50px" }}
-        />
-        <circle
-          cx="50" cy="50" r="38"
-          fill="none" stroke="var(--border)" strokeWidth="0.1" strokeDasharray="2 4"
-          className="animate-[spin_40s_linear_infinite_reverse]"
-          style={{ transformOrigin: "50px 50px" }}
-        />
-
-        {/* Connection lines & flowing particles */}
-        {techNodes.map((node, i) => (
-          <g key={`line-${node.label}`}>
-            <line
-              x1={centralNode.x} y1={centralNode.y}
-              x2={node.x} y2={node.y}
-              stroke="var(--border)" strokeWidth="0.2" strokeDasharray="1 1"
-            />
-            {/* Outward particle */}
-            <circle r="0.8" fill={node.color} opacity="0.8">
-              <animateMotion
-                dur={`${2.5 + i * 0.3}s`}
-                repeatCount="indefinite"
-                path={`M${centralNode.x},${centralNode.y} L${node.x},${node.y}`}
-              />
-            </circle>
-            {/* Inward particle */}
-            <circle r="0.5" fill="var(--accent)" opacity="0.5">
-              <animateMotion
-                dur={`${3 + i * 0.4}s`}
-                repeatCount="indefinite"
-                path={`M${node.x},${node.y} L${centralNode.x},${centralNode.y}`}
-              />
-            </circle>
-          </g>
+      <svg viewBox="-10 -10 120 120" className="w-full h-full">
+        {/* Orbit rings */}
+        {layers.map((layer, i) => (
+          <circle
+            key={i}
+            cx={center.x}
+            cy={center.y}
+            r={layer.radius}
+            fill="none"
+            stroke="var(--border)"
+            strokeWidth="0.2"
+            strokeDasharray="3 4"
+            className={`animate-[spin_${50 + i * 20}s_linear_infinite${
+              i % 2 ? "_reverse" : ""
+            }]`}
+            style={{ transformOrigin: "50px 50px" }}
+          />
         ))}
 
-        {/* Orbital particles */}
-        {[0, 1, 2].map((i) => (
-          <circle key={`orbit-${i}`} r="0.6" fill="var(--accent)" opacity={0.6 - i * 0.15}>
-            <animateMotion
-              dur={`${6 + i * 2}s`} repeatCount="indefinite"
-              path="M50,6 A44,44 0 1,1 49.99,6" begin={`${i * 2}s`}
-            />
-          </circle>
-        ))}
+        {/* Nodes */}
+        {layers.map((layer) =>
+          layer.nodes.map((node, i) => {
+            const angle = (360 / layer.nodes.length) * i;
+            const pos = polar(center.x, center.y, layer.radius, angle);
+            const isActive = active?.label === node.label;
 
-        {/* Orbital arrows */}
-        {[0, 1, 2, 3].map((i) => (
-          <polygon key={`arrow-${i}`} points="0,-0.8 1.4,0 0,0.8" fill="var(--accent)" opacity="0.5">
-            <animateMotion
-              dur={`${4 + i}s`} repeatCount="indefinite" rotate="auto"
-              path="M50,6 A44,44 0 1,1 49.99,6" begin={`${i * 1.5}s`}
-            />
-          </polygon>
-        ))}
-
-        {/* Tech nodes - fully colored circles */}
-        {techNodes.map((node, i) => {
-          const { lx, ly, anchor } = getLabelPosition(node);
-          return (
-            <g key={node.label}>
-              {/* Node glow */}
-              <circle cx={node.x} cy={node.y} r="5" fill={node.color} opacity="0.1">
-                <animate attributeName="r" values="5;7;5" dur={`${2 + i * 0.2}s`} repeatCount="indefinite" />
-              </circle>
-              {/* Solid colored node */}
-              <circle cx={node.x} cy={node.y} r={NODE_RADIUS} fill={node.color} />
-              {/* Subtle inner highlight */}
-              <circle cx={node.x - 0.8} cy={node.y - 0.8} r="1.2" fill="white" opacity="0.2" />
-
-              {/* Arrow line from label to node */}
-              <line
-                x1={lx} y1={ly}
-                x2={node.x + (lx - node.x) * 0.4} y2={node.y + (ly - node.y) * 0.4}
-                stroke={node.color} strokeWidth="0.15" opacity="0.6"
-              />
-              {/* Small arrow tip */}
-              <circle
-                cx={node.x + (lx - node.x) * 0.4}
-                cy={node.y + (ly - node.y) * 0.4}
-                r="0.35" fill={node.color} opacity="0.6"
-              />
-
-              {/* Label text outside */}
-              <text
-                x={lx} y={ly}
-                textAnchor={anchor}
-                dominantBaseline="middle"
-                fill={node.color}
-                fontSize="2.4"
-                fontFamily="var(--font-geist-mono), monospace"
-                fontWeight="600"
+            return (
+              <g
+                key={node.label}
+                onMouseEnter={() => setActive(node)}
+                onMouseLeave={() => setActive(null)}
+                onClick={() => node.link && window.open(node.link, "_blank")}
+                style={{ cursor: node.link ? "pointer" : "default" }}
               >
-                {node.label}
-              </text>
-            </g>
-          );
-        })}
+                {/* Data flow pulse */}
+                <circle r="1" fill={node.color} opacity="0.6">
+                  <animateMotion
+                    dur="3s"
+                    repeatCount="indefinite"
+                    path={`M${center.x},${center.y} L${pos.x},${pos.y}`}
+                  />
+                </circle>
 
-        {/* Central node */}
-        <circle cx={centralNode.x} cy={centralNode.y} r="10" fill="var(--accent)" opacity="0.08">
-          <animate attributeName="r" values="10;13;10" dur="3s" repeatCount="indefinite" />
+                {/* Connection */}
+                <line
+                  x1={center.x}
+                  y1={center.y}
+                  x2={pos.x}
+                  y2={pos.y}
+                  stroke={isActive ? node.color : "var(--border)"}
+                  strokeWidth="0.2"
+                  strokeDasharray="1 2"
+                />
+
+                {/* Glow */}
+                <circle
+                  cx={pos.x}
+                  cy={pos.y}
+                  r={isActive ? 7 : 5}
+                  fill={node.color}
+                  opacity={isActive ? 0.25 : 0.08}
+                />
+
+                {/* Node */}
+                <circle
+                  cx={pos.x}
+                  cy={pos.y}
+                  r={isActive ? 4.5 : 3}
+                  fill={node.color}
+                />
+
+                {/* Label */}
+                <text
+                  x={pos.x}
+                  y={pos.y + 8}
+                  textAnchor="middle"
+                  fill={node.color}
+                  fontSize="2.4"
+                  fontFamily="var(--font-geist-mono), monospace"
+                  fontWeight="600"
+                >
+                  {node.label}
+                </text>
+              </g>
+            );
+          })
+        )}
+
+        {/* Core */}
+        <circle cx={center.x} cy={center.y} r="15" fill="var(--accent)" opacity="0.08">
+          <animate attributeName="r" values="15;18;15" dur="4s" repeatCount="indefinite" />
         </circle>
-        <circle cx={centralNode.x} cy={centralNode.y} r="8" fill="var(--accent)" />
-        <circle cx={centralNode.x - 1.5} cy={centralNode.y - 1.5} r="3" fill="white" opacity="0.1" />
+
+        <circle cx={center.x} cy={center.y} r="11" fill="var(--accent)" />
+
         <text
-          x={centralNode.x} y={centralNode.y - 1}
-          textAnchor="middle" dominantBaseline="middle"
-          fill="white" fontSize="2.6"
-          fontFamily="var(--font-geist-mono), monospace" fontWeight="700"
+          x={center.x}
+          y={center.y}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fill="white"
+          fontSize="3"
+          fontFamily="var(--font-geist-mono), monospace"
+          fontWeight="700"
         >
-          Full
-        </text>
-        <text
-          x={centralNode.x} y={centralNode.y + 2}
-          textAnchor="middle" dominantBaseline="middle"
-          fill="white" fontSize="2.6"
-          fontFamily="var(--font-geist-mono), monospace" fontWeight="700"
-        >
-          Stack
+          Architect
         </text>
       </svg>
+
+      {/* Tooltip */}
+      {active && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-surface border border-border px-4 py-2 rounded-xl shadow-xl text-sm text-foreground-secondary backdrop-blur-md">
+          <span className="font-semibold text-accent">
+            {active.label}
+          </span>{" "}
+          — {active.desc}
+        </div>
+      )}
     </div>
   );
 }
