@@ -30,6 +30,8 @@
 
 ## 🧠 About Me
 
+https://jayfourportfolio.vercel.app/
+
 I am **Jemsi Fredrick (JAYFOUR)** — a Full-Stack Engineer focused on:
 
 - Secure system design & architecture
